@@ -1,0 +1,8 @@
+mat-sidenav {
+    width: 220px;
+  }
+
+mat-nav-list a.active {
+    font-weight: bold;
+    color: #3f51b5;
+  }
