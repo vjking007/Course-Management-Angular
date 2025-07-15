@@ -4,6 +4,7 @@ import { CourseService } from './services/course.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-courses',
@@ -16,6 +17,7 @@ export class CoursesComponent implements OnInit {
   dataSource = new MatTableDataSource<Course>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private courseService: CourseService){ }
 
@@ -27,6 +29,7 @@ export class CoursesComponent implements OnInit {
     this.courseService.getAll().subscribe(courses => {
       this.dataSource.data = courses;
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
