@@ -1,5 +1,10 @@
 <h2>Course List</h2>
 
+<mat-form-field appearance="outline" style="width: 300px; margin-bottom: 12px;">
+  <mat-label>Search Courses</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Type to filter..." />
+</mat-form-field>
+
 <!-- Add Course Button -->
 <div style="text-align: right; margin-bottom: 12px;">
   <button mat-raised-button color="primary" routerLink="/admin/courses/add">
