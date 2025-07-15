@@ -23,9 +23,9 @@ export class CourseService {
   //   return this.http.get<Course>(`${this.baseUrl}/${id}`);
   // }
 
-  // create(course: Course): Observable<Course> {
-  //   return this.http.post<Course>(this.baseUrl, course);
-  // }
+  create(course: Course): Observable<Course> {
+    return this.http.post<Course>(this.baseUrl, course);
+  }
 
   // update(id: number, course: Course): Observable<Course> {
   //   return this.http.put<Course>(`${this.baseUrl}/${id}`, course);

@@ -1,10 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened>
+  <mat-sidenav mode="side" opened class="sidenav">
       <app-sidebar></app-sidebar> <!-- ✅ Custom Sidebar -->
     </mat-sidenav>
   
     <mat-sidenav-content>
       <mat-toolbar color="primary">Toolbar</mat-toolbar>
+      <div class="content">
       <router-outlet></router-outlet>
+    </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

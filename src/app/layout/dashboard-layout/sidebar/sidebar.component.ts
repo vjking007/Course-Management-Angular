@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  isDashboardOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  toggleDashboardMenu(): void {
+    this.isDashboardOpen = !this.isDashboardOpen;
   }
 
 }
