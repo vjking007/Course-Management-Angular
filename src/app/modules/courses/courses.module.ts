@@ -13,6 +13,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'MM/dd/yyyy',
+  },
+  display: {
+    dateInput: 'MM/dd/yyyy',
+    monthYearLabel: 'MMM yyyy',
+    dateA11yLabel: 'MM/dd/yyyy',
+    monthYearA11yLabel: 'MMMM yyyy',
+  },
+};
+
 @NgModule({
   declarations: [
     CoursesComponent,
@@ -30,6 +44,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule
+  ],
+
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
   ],
 })
 export class CoursesModule { }
