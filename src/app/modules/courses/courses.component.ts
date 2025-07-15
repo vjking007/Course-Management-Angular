@@ -11,14 +11,27 @@ export class CoursesComponent implements OnInit {
 
   courses: Course[] = [];
 
-  constructor(private course: CourseService){ }
+  constructor(private courseService: CourseService){ }
 
   ngOnInit(): void {
-    console.log('Hey');
-    this.loadCourses();
+     this.loadCourses();
   }
 
   loadCourses(): void {
-    this.course.getAll().subscribe(data => this.courses = data);
+    this.courseService.getAll().subscribe(data => this.courses = data);
+  }
+
+  onDelete(courseId: number): void {
+    if (confirm('Are you sure you want to delete this course?')) {
+      this.courseService.delete(courseId).subscribe({
+        next: () => {
+          this.courses = this.courses.filter(c => c.courseId !== courseId);
+          alert('Course deleted successfully!');
+        },
+        error: () => {
+          alert('Failed to delete course.');
+        }
+      });
+    }
   }
 }
