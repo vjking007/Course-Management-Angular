@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout.component';
 
 const routes: Routes = [
-{path: '', component: DashboardLayoutComponent, children: [
+{path: '',component: DashboardLayoutComponent,
+  children: [
     {
       path: 'courses',
       loadChildren: () =>
@@ -11,7 +12,7 @@ const routes: Routes = [
     },
     {
       path: '',
-      redirectTo: '/admin/courses',
+      redirectTo: 'courses',
       pathMatch: 'full'
     }
   ]

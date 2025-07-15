@@ -1,0 +1,54 @@
+<h2>Add New Course</h2>
+
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()" style="max-width: 500px;">
+  <!-- Course Name -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Course Name</mat-label>
+    <input matInput formControlName="courseName" />
+    <mat-error *ngIf="courseForm.get('courseName')?.hasError('required')">
+      Course name is required
+    </mat-error>
+    <mat-error *ngIf="courseForm.get('courseName')?.hasError('minlength')">
+      Minimum 3 characters
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Description -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error *ngIf="courseForm.get('description')?.hasError('required')">
+      Description is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Duration -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Duration (hours)</mat-label>
+    <input type="number" matInput formControlName="duration" />
+    <mat-error *ngIf="courseForm.get('duration')?.hasError('required')">
+      Duration is required
+    </mat-error>
+    <mat-error *ngIf="courseForm.get('duration')?.hasError('min')">
+      Must be at least 1 hour
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Start Date -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Start Date</mat-label>
+    <input matInput type="date" formControlName="startDate" />
+    <mat-error *ngIf="courseForm.get('startDate')?.hasError('required')">
+      Start date is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- End Date -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>End Date</mat-label>
+    <input matInput type="date" formControlName="endDate" />
+  </mat-form-field>
+
+  <!-- Submit Button -->
+  <button mat-raised-button color="primary" type="submit">Add Course</button>
+</form>
