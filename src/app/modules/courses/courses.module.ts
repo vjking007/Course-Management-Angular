@@ -12,6 +12,7 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
@@ -43,7 +44,8 @@ export const MY_DATE_FORMATS = {
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatPaginatorModule
   ],
 
   providers: [

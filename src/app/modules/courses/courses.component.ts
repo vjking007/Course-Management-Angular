@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Course} from './models/course.model';
 import { CourseService } from './services/course.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-courses',
@@ -10,6 +13,9 @@ import { CourseService } from './services/course.service';
 export class CoursesComponent implements OnInit {
 
   courses: Course[] = [];
+  dataSource = new MatTableDataSource<Course>([]);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private courseService: CourseService){ }
 
@@ -18,7 +24,10 @@ export class CoursesComponent implements OnInit {
   }
 
   loadCourses(): void {
-    this.courseService.getAll().subscribe(data => this.courses = data);
+    this.courseService.getAll().subscribe(courses => {
+      this.dataSource.data = courses;
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   onDelete(courseId: number): void {
