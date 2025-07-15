@@ -5,7 +5,7 @@ import { CoursesComponent } from './courses.component';
 
 const routes: Routes = [{ path: '', component: CoursesComponent },
 { path: 'add', component: AddCourseComponent },
-// { path: 'edit/:id', component: CourseFormComponent },
+{ path: 'edit/:id', component: AddCourseComponent },
 // { path: 'view/:id', component: CourseDetailComponent }
 ];
 
