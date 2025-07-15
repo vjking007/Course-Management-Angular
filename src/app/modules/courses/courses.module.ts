@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatSortModule } from '@angular/material/sort';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 export const MY_DATE_FORMATS = {
@@ -45,7 +45,8 @@ export const MY_DATE_FORMATS = {
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
 
   providers: [
