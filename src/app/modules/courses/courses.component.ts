@@ -30,6 +30,24 @@ export class CoursesComponent implements OnInit {
       this.dataSource.data = courses;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
+       //Custom filter logic
+    // ✅ Custom filter logic
+    this.dataSource.filterPredicate = (data: Course, filter: string): boolean => {
+      const filterValue = filter.trim().toLowerCase();
+
+      const name = data.courseName?.toLowerCase() || '';
+      const desc = data.description?.toLowerCase() || '';
+      const startDate = new Date(data.startDate).toLocaleDateString('en-US'); // e.g. 7/15/2025
+      const duration = data.duration?.toString() || '';
+
+      return (
+        name.includes(filterValue) ||
+        desc.includes(filterValue) ||
+        startDate.includes(filterValue) ||
+        duration.includes(filterValue)
+      );
+    };
     });
   }
 
@@ -45,5 +63,10 @@ export class CoursesComponent implements OnInit {
         }
       });
     }
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
