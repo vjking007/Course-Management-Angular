@@ -7,7 +7,7 @@
   </button>
 </div>
 
-<table mat-table [dataSource]="courses" class="mat-elevation-z8" style="width: 100%; margin-top: 20px;">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%; margin-top: 20px;">
     
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -68,3 +68,4 @@
   <tr mat-row *matRowDef="let row; columns: ['id', 'title', 'description', 'duration','startDate','endDate','createdAt','updatedAt','actions']"></tr>
 
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
