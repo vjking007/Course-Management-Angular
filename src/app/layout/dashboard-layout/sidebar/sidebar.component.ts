@@ -16,5 +16,4 @@ export class SidebarComponent implements OnInit {
   toggleDashboardMenu(): void {
     this.isDashboardOpen = !this.isDashboardOpen;
   }
-
 }
