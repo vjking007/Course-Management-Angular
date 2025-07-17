@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   loginForm!:FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, 
+    private auth: AuthService, 
+    private router: Router) {}
 
   ngOnInit(): void {
   this.loginForm = this.fb.group({
@@ -27,8 +29,9 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.loginForm.value).subscribe({
       next: (res) => {
-        console.log(res.token);
         this.auth.saveToken(res.token);
+        const username = this.auth.getUsernameFromToken();
+        this.auth.setLoggedInUsername(username!);
         this.router.navigate(['/admin/courses']);
       },
       error: () => {

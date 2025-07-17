@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {jwtDecode } from 'jwt-decode';
 
 @Injectable({
@@ -10,8 +10,36 @@ import {jwtDecode } from 'jwt-decode';
 export class AuthService {
 
   private baseUrl = 'http://localhost:9092/auth'; // Spring Boot endpoint
+  
+  private loggedInUsername = new BehaviorSubject<string | null>(null);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const username = this.getUsernameFromToken();
+    if (username) {
+      this.setLoggedInUsername(username);
+    }
+  }
+
+  getUsernameFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+  
+    try {
+      const decoded: any = jwtDecode(token);
+      return decoded.sub || decoded.username;  // Depends on backend
+    } catch (e) {
+      console.error('Invalid token');
+      return null;
+    }
+  }
+
+  setLoggedInUsername(username: string) {
+    this.loggedInUsername.next(username);
+  }
+  
+  getLoggedInUsername(): Observable<string | null> {
+    return this.loggedInUsername.asObservable();
+  }
 
   isTokenExpired(): boolean {
     const token = localStorage.getItem('token');
