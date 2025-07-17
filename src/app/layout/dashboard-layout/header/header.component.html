@@ -1,1 +1,10 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <span>Course App</span>
+    <span class="spacer"></span>
+  
+    <span *ngIf="username">
+      Welcome, {{ username }}
+    </span>
+  
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar>
