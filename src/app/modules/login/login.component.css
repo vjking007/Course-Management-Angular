@@ -1,0 +1,32 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+  }
+  
+  .login-card {
+    width: 360px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .login-title {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .error-text {
+    color: red;
+    margin-top: 8px;
+    display: block;
+    text-align: center;
+  }
+  
