@@ -22,3 +22,17 @@ table {
     border-bottom: 1px solid #ddd;
   }
   
+  .header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* ✅ allow wrap on small screens */
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .search-field {
+    flex: 1 1 250px; /* grow/shrink, min-width 250px */
+    min-width: 250px;
+    width: 50%;;
+  }
